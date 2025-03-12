@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 8px;
+}
+
+.container {
+  box-sizing: content-box;
+  min-width: 960px;
+  max-width: 960px;
+  min-height: 960px;
+  max-height: 960px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+
+button {
+  font-size: 20px;
+  padding: 8px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  margin: 20px;
+}
