@@ -15,7 +15,7 @@ function createGrid(size) {
       square.classList.add("square");
       square.setAttribute(
         "style",
-        `width:${squareSize}px; height:${squareSize}px;`
+        `width:${squareSize}px; height:${squareSize}px; border: 1px solid lightgrey`
       );
       square.style.hov;
       container.appendChild(square);
@@ -23,10 +23,18 @@ function createGrid(size) {
   }
 }
 
-container.addEventListener("mouseover", (e) => {
+container.addEventListener("mouseover", draw);
+container.addEventListener("drag", draw);
+container.addEventListener("mousedown", draw);
+
+function draw(e) {
+  console.log(e.type);
+  console.log(e.buttons);
+  if (e.type === "mouseover" && e.buttons != 1) {
+    return;
+  }
   if (e.target.classList == "square") {
     rgba = getRgba(e);
-    console.log(rgba);
     if (rgba.toString() == [0, 0, 0, 0].toString()) {
       newRgba = generateRandomRgba(rgba);
     } else {
@@ -35,10 +43,9 @@ container.addEventListener("mouseover", (e) => {
         newRgba[3] += 0.1;
       }
     }
-    console.log(newRgba.toString());
     e.target.style.backgroundColor = `rgba(${newRgba})`;
   }
-});
+}
 
 gridButton.addEventListener("click", (e) => {
   let size;
